@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "HERE_API_KEY": "@here_api_key"
+    }
+  }
+}
