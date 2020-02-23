@@ -1,6 +1,6 @@
 import App from 'next/app';
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 const theme = {
   colors: {
@@ -8,12 +8,23 @@ const theme = {
   }
 };
 
+const Container = styled.main`
+  font-size: 12px;
+  font-family: 'Courier New';
+  * {
+    font-family: 'Courier New';
+    box-sizing: border-box;
+  }
+`;
+
 export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </ThemeProvider>
     );
   }

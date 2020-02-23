@@ -10,6 +10,7 @@ export default class extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
+          // eslint-disable-next-line react/jsx-props-no-spreading
           enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
         });
 
@@ -30,6 +31,7 @@ export default class extends Document {
 
   render() {
     return (
+      // eslint-disable-next-line jsx-a11y/html-has-lang
       <html>
         <Head>
           <script
@@ -52,7 +54,7 @@ export default class extends Document {
             }}
           />
         </Head>
-        <body>
+        <body style={{ margin: 0}}>
           <Main />
           <NextScript />
         </body>
