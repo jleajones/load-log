@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import AutoCompleteInput from './autoCompleteInput';
+
+import { parsePlace } from '../utils/helpers';
 
 const AddressInput = ({ label = 'Address', id = 'address' }) => {
   const [address, setAddress] = useState('');
   const [places, setPlaces] = useState([]);
 
-  useEffect(() => {
-    if (address && window.platform) {
-        const platform = window.platform;
+  const onChange = searchText => {
+    if (searchText && window.platform) {
+      const platform = window.platform;
       const geocoder = platform.getGeocodingService();
 
       geocoder.geocode(
         {
-          searchText: address
+          searchText
         },
         result => {
           if (
             result.Response.View[0] &&
             result.Response.View[0].Result.length
           ) {
-            const possiblePlaces = result.Response.View[0].Result.map(place => {
-              return {
-                ...place.Location
-              };
-            });
+            const possiblePlaces = result.Response.View[0].Result.map(place =>
+              parsePlace(place)
+            );
             console.log('Possible places: ', possiblePlaces);
             setPlaces(possiblePlaces);
           }
@@ -31,32 +32,23 @@ const AddressInput = ({ label = 'Address', id = 'address' }) => {
           console.log('Error: ', error);
         }
       );
-    } else {
-      setPlaces([]);
     }
-  }, [address]);
+  };
 
-  const handleOnchange = e => {
-    setAddress(e.target.value);
+  const onClick = address => {
+    console.log(address);
+    setAddress(address);
   };
 
   return (
     <div>
       <label htmlFor={id}>{label}:</label>
-      <input
+      <AutoCompleteInput
+        onChange={onChange}
+        onClick={onClick}
+        options={places}
         id={id}
-        name="address"
-        type="text"
-        onChange={handleOnchange}
-        autoComplete="new-password"
       />
-      {places.length > 0 && (
-        <ul>
-          {places.map(place => (
-            <li key={place.LocationId}>{place.Address.Label}</li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 };

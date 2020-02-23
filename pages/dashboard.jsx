@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
-import Head from 'next/head';
 import AddressInput from '../components/addressInput';
+import styled from 'styled-components';
 
-const Index = () => {
+const Title = styled.h1`
+  font-size: 50px;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+const Dashoboard = () => {
   return (
-    <>
-      <Head>
-      </Head>
-      <div>
-        <h1>This is the Dashboard...</h1>
-        <p>APP: NWowe8ycVV8uJT4hXLOM</p>
-        <p>API: do3gLItZqjHxYrA6zsiVajuSI02m6RulkOuY2H2lX1k</p>
-        <AddressInput />
-      </div>
-    </>
+    <div>
+      <Title>This is the Dashboard...</Title>
+      <AddressInput label='Start Location'/>
+    </div>
   );
 };
 
-export default Index;
+export default Dashoboard;
