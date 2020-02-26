@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AutoCompleteInput from './autoCompleteInput';
 
 import { parsePlace } from '../utils/helpers';
 
-const AddressInput = ({ label, id }) => {
-  const [address, setAddress] = useState('');
+const AddressInput = ({ label, id, name, onUpdate, defaultValue, children }) => {
+  const [address, setAddress] = useState({ ...defaultValue });
   const [places, setPlaces] = useState([]);
 
   const onError = error => {
     console.log('Error: ', error);
   };
+
+  useEffect(() => {
+    setAddress({ ...defaultValue });
+  }, [defaultValue.label]);
 
   const onSuccess = result => {
     if (result.Response.View[0] && result.Response.View[0].Result.length) {
@@ -31,32 +35,39 @@ const AddressInput = ({ label, id }) => {
   };
 
   const onClick = value => {
-    console.log(value);
     setAddress(value);
+    onUpdate(name, value);
   };
 
   return (
-    <div>
-      <AutoCompleteInput
-        label={label}
-        onChange={onChange}
-        onClick={onClick}
-        options={places}
-        id={id}
-        placeholder="123 West Broad St, New York, NY 10017, United States"
-      />
-    </div>
+    <AutoCompleteInput
+      label={label}
+      onChange={onChange}
+      onClick={onClick}
+      options={places}
+      id={id}
+      name={name}
+      placeholder="123 West Broad St, New York, NY 10017, United States"
+      defaultValue={address.label}
+    >
+      {children}
+    </AutoCompleteInput>
   );
 };
 
 AddressInput.defaultProps = {
-  label: 'address',
-  id: 'address'
+  children: null
 };
 
 AddressInput.propTypes = {
-  label: PropTypes.string,
-  id: PropTypes.string
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  defaultValue: PropTypes.shape({
+    label: PropTypes.string.isRequired
+  }).isRequired,
+  children: PropTypes.node
 };
 
 export default AddressInput;
