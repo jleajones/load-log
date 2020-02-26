@@ -2,6 +2,7 @@ import React, { useReducer, useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 import AddressInput from '../addressInput';
+
 import { initialState, reducer } from './reducer';
 import { STOPS_MIN_LENGTH, TYPES } from './constants';
 import { LoadContext } from './context';
