@@ -1,4 +1,4 @@
-const STOPS_MIN_LENGTH = 2;
+import { STOPS_MIN_LENGTH, TYPES } from './constants';
 
 const initialState = {
   start: [
@@ -11,14 +11,14 @@ const initialState = {
 
 const reducer = (state, action) => {
   const { type, payload } = action;
-  if (type === 'start') {
+  if (type === TYPES.START) {
     return {
       ...state,
       start: [payload]
     };
   }
 
-  if (type.includes('stop')) {
+  if (type.includes(TYPES.STOP)) {
     const stopNumber = type.split('-')[1];
     const stops = [...state.stops];
     stops[stopNumber] = payload;
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (type === 'add') {
+  if (type === TYPES.ADD) {
     const stops = [...state.stops];
     stops.push({ label: '' });
     return {
@@ -37,7 +37,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (type === 'remove' && state.stops.length > STOPS_MIN_LENGTH) {
+  if (type === TYPES.REMOVE && state.stops.length > STOPS_MIN_LENGTH) {
     const stops = [...state.stops];
     stops.splice(payload, 1);
     return {

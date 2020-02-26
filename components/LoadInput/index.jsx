@@ -1,9 +1,10 @@
-import React, { useReducer, useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
+import React, { useReducer, useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 import AddressInput from '../addressInput';
-import { initialState, reducer, STOPS_MIN_LENGTH } from './reducer';
+import { initialState, reducer } from './reducer';
+import { STOPS_MIN_LENGTH, TYPES } from './constants';
+import { LoadContext } from './context';
 
 const Container = styled.div`
   min-width: 300px;
@@ -58,31 +59,30 @@ const LoadInput = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isLoadComplete, setIsLoadComplete] = useState(false);
 
+  const { setLoad } = useContext(LoadContext);
+
   const onUpdate = (name, value) => {
     dispatch({ type: name, payload: value });
   };
 
   const onAdd = () => {
-    dispatch({ type: 'add' });
+    dispatch({ type: TYPES.ADD });
   };
 
   const onRemove = index => {
-    dispatch({ type: 'remove', payload: index });
+    dispatch({ type: TYPES.REMOVE, payload: index });
   };
 
   const onSave = () => {
-    console.log('Save load', state);
+    setLoad(state);
   };
 
-  const hasAllStops = stops=> {
-    console.log(stops);
-    return stops.every(stop => stop.label)
+  const hasAllStops = stops => {
+    return stops.every(stop => stop.label);
   };
 
   useEffect(() => {
-    console.log('State is Updating: ', state);
-    if (state.start.label && hasAllStops(state.stops)) {
-      console.log('allowing to click...');
+    if (state.start[0].label && hasAllStops(state.stops)) {
       setIsLoadComplete(true);
     }
   }, [state]);

@@ -93,7 +93,7 @@ const AutoCompleteInput = ({
     };
   };
 
-  // TODO: account for blur event to hide options (blur might === click so its tricky)
+  // TODO: account for blur event to hide options (blur might === option click so its tricky)
   return (
     <Component>
       <Label htmlFor={id}>{label}:</Label>

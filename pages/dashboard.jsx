@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-// import AddressInput from '../components/addressInput';
 import LoadInput from '../components/LoadInput';
+import { LoadProvider } from '../components/LoadInput/context';
+import Map from '../components/Map';
 
 const Container = styled.div`
   display: flex;
@@ -14,21 +15,17 @@ const Container = styled.div`
 //   color: ${({ theme }) => theme.colors.primary};
 // `;
 
-const Map = styled.div`
-  width: 75%;
-  background: #ccc;
-  height: 100vh
-`;
-
-const Dashboard = () => (
-  <>
+const Dashboard = () => {
+  return (
     <Container>
-      <LoadInput />
-      <Map>
-        <div/>
-      </Map>
+      <LoadProvider>
+        <>
+          <LoadInput />
+          <Map />
+        </>
+      </LoadProvider>
     </Container>
-  </>
-);
+  );
+};
 
 export default Dashboard;
