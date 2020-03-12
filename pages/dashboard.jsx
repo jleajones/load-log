@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState} from 'react';
 import styled from 'styled-components';
+
+import Layout from '../components/layouts/dashboard';
 import LoadInput from '../components/LoadInput';
 import { LoadProvider } from '../components/LoadInput/context';
 import Map from '../components/Map';
@@ -16,15 +18,22 @@ const Container = styled.div`
 // `;
 
 const Dashboard = () => {
+  const [data, setData ] = useState({});
+  const handleSave = data => {
+    setData(data);
+    console.log('handleSave::', data);
+  };
+
   return (
-    <Container>
-      <LoadProvider>
-        <>
-          <LoadInput />
+    <Layout>
+      <Container>
+        <LoadProvider>
+          <LoadInput saveLoad={handleSave} />
           <Map />
-        </>
-      </LoadProvider>
-    </Container>
+        </LoadProvider>
+        <pre>{JSON.stringify(data)}</pre>
+      </Container>
+    </Layout>
   );
 };
 

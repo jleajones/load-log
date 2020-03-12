@@ -72,12 +72,13 @@ const AutoCompleteInput = ({
   children
 }) => {
   const [value, setValue] = useState(defaultValue);
-
-  useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue]);
-
   const [hideOptions, setHideOptions] = useState(false);
+
+  const handleOutsideClick = event => {
+    if (options.length > 0 && event.target.nodeName !== 'LI') {
+      setHideOptions(true);
+    }
+  };
 
   const handleOnChange = e => {
     setHideOptions(false);
@@ -93,7 +94,20 @@ const AutoCompleteInput = ({
     };
   };
 
-  // TODO: account for blur event to hide options (blur might === option click so its tricky)
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue]);
+
+  useEffect(() => {
+    // Might not need this here, but uncertain if the clean fn runs on update as well
+    document.removeEventListener('click', handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [options]);
+
   return (
     <Component>
       <Label htmlFor={id}>{label}:</Label>

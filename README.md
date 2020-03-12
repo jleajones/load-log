@@ -6,13 +6,9 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.ts`. The page auto-updates as you edit the file.
 
 ## Learn More
 
@@ -25,6 +21,36 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 
 ## Deploy on ZEIT Now
 
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/) from the creators of Next.js.
+#### Env Vars
+- [x] HERE Maps API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Check List
+- [x] Nextjs
+- [x] Git Repo
+- [x] Eslint
+- [x] Prettier
+- [x] Now Deployment
+
+#### Client
+- [x] Load Page
+    - [ ] Load Input
+        - [ ] AutoComplete
+        - [ ] Add Input
+    - [ ] Map
+        - [ ] Route
+        - [ ] Markers (stops)
+- [ ] Create Account Page
+- [ ] Login Page
+- [ ] My Account Page
+- [ ] Dashboard
+
+#### Server
+- [x] Setup GraphQL
+- [x] Create DB (load-log)
+- [x] Init knex
+    - [x] Migrations/Seeds
+        - [x] Loads
+        - [x] Locations
+        - [x] Address
+        - [x] Positions
+        - [x] Users
