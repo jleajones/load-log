@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { useQuery } from '@apollo/react-hooks';
 // import styled from 'styled-components';
-import { withApollo } from '../apollo/client';
+import { withApollo } from '../apollo/withApollo';
 import Layout from '../components/layouts/marketing';
 
 const LoadQuery = gql`
@@ -51,4 +51,4 @@ const Index = () => {
   );
 };
 
-export default withApollo(Index);
+export default withApollo({ssr: true})(Index);

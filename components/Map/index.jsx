@@ -76,48 +76,46 @@ const Map = () => {
       };
 
       const onResult = result => {
-        console.log('in the result...');
         let route;
         let routeShape;
         let linestring;
         if (result.response.route) {
-          console.log(result.response);
           // Pick the first route from the response:
-          // [route] = result.response.route;
-          // // Pick the route's shape:
-          // routeShape = route.shape;
-          //
-          // // Create a linestring to use as a point source for the route line
-          // linestring = new H.geo.LineString();
-          //
-          // // Push all the points in the shape into the linestring:
-          // routeShape.forEach(point => {
-          //   const parts = point.split(',');
-          //   linestring.pushLatLngAlt(parts[0], parts[1]);
-          // });
-          //
-          // // Retrieve the mapped positions of the requested waypoints:
-          // const points = route.waypoint.map(point => {
-          //   // Create a marker for the points:
-          //   const { mappedPosition } = point;
-          //   return new H.map.Marker({
-          //     lat: mappedPosition.latitude,
-          //     lng: mappedPosition.longitude
-          //   });
-          // });
-          //
-          // // Create a polyline to display the route:
-          // const routeLine = new H.map.Polyline(linestring, {
-          //   style: { strokeColor: 'blue', lineWidth: 3 }
-          // });
-          //
-          // // Add the route polyline and the two markers to the map:
-          // mapState.addObjects([routeLine, ...points]);
-          //
-          // // Set the map's viewport to make the whole route visible:
-          // mapState
-          //   .getViewModel()
-          //   .setLookAtData({ bounds: routeLine.getBoundingBox() });
+          [route] = result.response.route;
+          // Pick the route's shape:
+          routeShape = route.shape;
+
+          // Create a linestring to use as a point source for the route line
+          linestring = new H.geo.LineString();
+
+          // Push all the points in the shape into the linestring:
+          routeShape.forEach(point => {
+            const parts = point.split(',');
+            linestring.pushLatLngAlt(parts[0], parts[1]);
+          });
+
+          // Retrieve the mapped positions of the requested waypoints:
+          const points = route.waypoint.map(point => {
+            // Create a marker for the points:
+            const { mappedPosition } = point;
+            return new H.map.Marker({
+              lat: mappedPosition.latitude,
+              lng: mappedPosition.longitude
+            });
+          });
+
+          // Create a polyline to display the route:
+          const routeLine = new H.map.Polyline(linestring, {
+            style: { strokeColor: 'blue', lineWidth: 3 }
+          });
+
+          // Add the route polyline and the two markers to the map:
+          mapState.addObjects([routeLine, ...points]);
+
+          // Set the map's viewport to make the whole route visible:
+          mapState
+            .getViewModel()
+            .setLookAtData({ bounds: routeLine.getBoundingBox() });
         }
       };
 

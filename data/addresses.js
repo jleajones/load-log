@@ -7,8 +7,8 @@ module.exports = [
     county: 'Essex',
     city: 'Maplewood',
     street: 'Brown St',
-    houseNumber: '9',
-    postalCode: '07040'
+    house_number: '9',
+    postal_code: '07040'
   },
   {
     id: 1,
@@ -19,8 +19,8 @@ module.exports = [
     city: 'New York',
     district: 'Garment District',
     street: 'Broadway',
-    houseNumber: '1375',
-    postalCode: '10018'
+    house_number: '1375',
+    postal_code: '10018'
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ module.exports = [
     city: 'Huntington Station',
     district: 'Huntington Station',
     street: 'W 11th St',
-    houseNumber: '42',
-    postalCode: '11746'
+    house_number: '42',
+    postal_code: '11746'
   }
 ];
