@@ -191,7 +191,6 @@ export const resolvers = {
                 if (newLocation.length) {
                   [finalStop] = newLocation;
                 }
-                console.log('finalStop: ', finalStop);
               } catch (e) {
                 console.log('error: ', e);
               }

@@ -39,6 +39,14 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
     - [ ] Map
         - [ ] Route
         - [ ] Markers (stops)
+- [x] Setup Apollo Client
+    - [x] Install apollo-client
+    - [x] Install apollo-cache-inmemory
+    - [x] Install apollo-link-http
+    - [x] Install @apollo/react-hooks
+    - [x] Install @apollo/react-hooks
+    - [x] Create `withApollo` HOC
+    - [x] SSR with @apollo/react-ssr
 - [ ] Create Account Page
 - [ ] Login Page
 - [ ] My Account Page
@@ -46,8 +54,13 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 
 #### Server
 - [x] Setup GraphQL
+    - [x] Install graphql-tools
+    - [x] Install graphql-tag
+    - [x] Install graphql-tools 
+- [x] Install Apollo Server Micro
 - [x] Create DB (load-log)
 - [x] Init knex
+    - [ ] Install knex
     - [x] Migrations/Seeds
         - [x] Loads
         - [x] Locations
