@@ -1,7 +1,12 @@
 {
   "build": {
     "env": {
-      "HERE_API_KEY": "@here_api_key"
+      "HERE_API_KEY": "@here_api_key",
+      "DATABASE_HOST": "@database_host",
+      "DATABASE_USER": "@database_user",
+      "DATABASE_PASSWORD": "@database_password",
+      "DATABASE_NAME": "@database_name",
+      "GRAPHQL_API_URI": "@graphql_api_uri"
     }
   }
 }

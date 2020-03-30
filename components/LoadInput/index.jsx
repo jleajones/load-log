@@ -1,13 +1,13 @@
 import React, { useReducer, useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 import AddressInput from '../addressInput';
-
 import { initialState, reducer } from './reducer';
 import { STOPS_MIN_LENGTH, TYPES } from './constants';
 import { LoadContext } from './context';
 
-const Container = styled.div`
+const Container = styled.form`
   min-width: 300px;
   flex-grow: 1;
   height: 100vh;
@@ -56,7 +56,7 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
-const LoadInput = () => {
+const LoadInput = ({ saveLoad }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isLoadComplete, setIsLoadComplete] = useState(false);
 
@@ -74,8 +74,12 @@ const LoadInput = () => {
     dispatch({ type: TYPES.REMOVE, payload: index });
   };
 
-  const onSave = () => {
+  const onMap = () => {
     setLoad(state);
+  };
+
+  const onSave = () => {
+    saveLoad(state);
   };
 
   const hasAllStops = stops => {
@@ -85,11 +89,13 @@ const LoadInput = () => {
   useEffect(() => {
     if (state.start[0].label && hasAllStops(state.stops)) {
       setIsLoadComplete(true);
+    } else {
+      setIsLoadComplete(false);
     }
   }, [state]);
 
   return (
-    <Container>
+    <Container autoComplete="off">
       <h3>Enter Load:</h3>
       <AddressInput
         label="Departing From"
@@ -99,6 +105,7 @@ const LoadInput = () => {
         defaultValue={state.start[0]}
       />
       {state.stops.map((stop, idx) => {
+        // TODO: break out to new component
         const key = `stop-${idx}`;
         const onClick = () => {
           onRemove(idx);
@@ -124,16 +131,21 @@ const LoadInput = () => {
       })}
       <ButtonContainer>
         <Button type="button" outline onClick={onAdd}>
-          <ReactSVG src="/add.svg" /> Add Stop
+          Add Stop
+        </Button>
+        <Button type="button" onClick={onMap} disabled={!isLoadComplete}>
+          Map Load
         </Button>
         <Button type="button" onClick={onSave} disabled={!isLoadComplete}>
-          <ReactSVG src="/save.svg" /> Save Load
+          Save Load
         </Button>
       </ButtonContainer>
     </Container>
   );
 };
 
-LoadInput.propType = {};
+LoadInput.propTypes = {
+  saveLoad: PropTypes.func.isRequired
+};
 
 export default LoadInput;
