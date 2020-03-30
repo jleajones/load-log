@@ -4,6 +4,7 @@ exports.up = knex => {
     table.string('email', 255).notNullable().unique();
     // TODO: does not need to be unique
     table.string('password', 255).notNullable();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
 

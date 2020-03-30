@@ -22,13 +22,18 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 ## Deploy on ZEIT Now
 
 #### Env Vars
-- [x] HERE Maps API
+- [x] HERE Maps API Key
+- [x] Posgres DB Connection String
+- [x] GraphQL API URI
 
 ## Check List
 - [x] Nextjs
 - [x] Git Repo
-- [x] Eslint
 - [x] Prettier
+- [x] Eslint
+    - [x] babel-parser
+    - [x] airbnb config
+    - [x] prettier config
 - [x] Now Deployment
 
 #### Client
@@ -44,7 +49,6 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
     - [x] Install apollo-cache-inmemory
     - [x] Install apollo-link-http
     - [x] Install @apollo/react-hooks
-    - [x] Install @apollo/react-hooks
     - [x] Create `withApollo` HOC
     - [x] SSR with @apollo/react-ssr
 - [ ] Create Account Page
@@ -56,14 +60,15 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 - [x] Setup GraphQL
     - [x] Install graphql-tools
     - [x] Install graphql-tag
-    - [x] Install graphql-tools 
+    - [x] Install graphql-tools
 - [x] Install Apollo Server Micro
 - [x] Create DB (load-log)
 - [x] Init knex
-    - [ ] Install knex
+    - [x] Install knex
     - [x] Migrations/Seeds
         - [x] Loads
         - [x] Locations
         - [x] Address
         - [x] Positions
         - [x] Users
+- [x] Setup Remote DB
