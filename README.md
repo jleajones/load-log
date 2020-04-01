@@ -26,6 +26,10 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 - [x] Posgres DB Connection String
 - [x] GraphQL API URI
 
+### DB Files
+- [ ] Create `db` directory in the root of the project
+- [ ] Create child `data` directory
+
 ## Check List
 - [x] Nextjs
 - [x] Git Repo
@@ -72,3 +76,5 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
         - [x] Positions
         - [x] Users
 - [x] Setup Remote DB
+    - [x] Heroku
+    - [x] Docker Container - https://hub.docker.com/_/postgres
