@@ -8,7 +8,7 @@ WORKDIR /www
 
 COPY --chown=1000:1000 . .
 RUN npm install
-RUN npm build
+RUN npm run build
 
 EXPOSE 3000
 EXPOSE 5432
