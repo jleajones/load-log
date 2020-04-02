@@ -33,6 +33,7 @@ const Index = () => {
 
   return (
     <Layout>
+      <h1>MAKE a big change!</h1>
       <ul>
         <li>
           <Link href="/sign-up">
