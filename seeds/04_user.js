@@ -1,4 +1,4 @@
-const users = require('../data/users');
+const users = require('../constants/data/users');
 
 exports.seed = knex => {
   // Deletes ALL existing entries

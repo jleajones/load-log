@@ -9,6 +9,19 @@ module.exports = {
       user: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
+      ssl: false
+    },
+    migrations: {
+      directory: './db/migrations'
+    }
+  },
+  production: {
+    client: 'pg',
+    connection: {
+      host: process.env.DATABASE_HOST,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       ssl: true
     }
   }

@@ -8,6 +8,8 @@ First, run the development server:
 npm run dev
 ```
 
+#### w/ Docker 🧙🏽‍♂️
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Learn More
@@ -25,6 +27,10 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 - [x] HERE Maps API Key
 - [x] Posgres DB Connection String
 - [x] GraphQL API URI
+
+### DB Files
+- [ ] Create `db` directory in the root of the project
+- [ ] Create child `data` directory
 
 ## Check List
 - [x] Nextjs
@@ -72,3 +78,5 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
         - [x] Positions
         - [x] Users
 - [x] Setup Remote DB
+    - [x] Heroku
+    - [x] Docker Container - https://hub.docker.com/_/postgres
